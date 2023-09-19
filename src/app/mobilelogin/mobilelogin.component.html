@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="col-md-6">
+        <form [formGroup]="MobileLoginForm" novalidate>
+            <div class="text-center mb-4">
+                <h1 class="h3">Mobile Login</h1>
+            </div>
+            <div class="form-group mb-4 text-left">
+                <div class="position-relative">
+                    <input [ngClass]="{'is-invalid':MobileLoginForm.get('mobileNumber').hasError('required') &&
+                    MobileLoginForm.get('mobileNumber').touched || (MobileLoginForm.get('mobileNumber').hasError('pattern')) }" type="text"
+                        name="mobile" formControlName="mobileNumber" placeholder="Mobile Number" maxlength="10"
+                        class="form-control">
+                    <span class="text-danger" *ngIf="MobileLoginForm.get('mobileNumber').hasError('required') && 
+                    MobileLoginForm.get('mobileNumber').touched">
+                        Mobile Number is Required
+                    </span>
+                    <span class="text-danger" *ngIf="MobileLoginForm.get('mobileNumber').hasError('pattern') && 
+                    MobileLoginForm.get('mobileNumber').touched">
+                        Enter valid Mobile Number
+                    </span>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" (click)="MobileVerify()" class="btn btn-primary">Login</button>
+            </div>
+            <div class="form-group text-center">
+                <a [routerLink]="'/login'">Login with Email</a>
+            </div>
+        </form>
+    </div>
+</div>
