@@ -8,13 +8,15 @@ import { LoginComponent } from './login/login.component';
 import { ValidationService } from './shared/Validation.service';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { MobileLoginComponent } from './mobilelogin/mobilelogin.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RecoverPasswordComponent,
-    MobileLoginComponent
+    MobileLoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

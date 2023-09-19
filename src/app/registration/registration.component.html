@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="card flex justify-content-center">
+    <p-card header="Title">
+      <div class="col-md-6">
+        <p-card header="Sign In">
+          <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="text-left mb-4">
+              <div class="position-relative">
+                <input type="text" name="firstName" formControlName="FirstName" class="form-control"
+                  placeholder="FirstName">
+                  <span class="text-danger"
+                  *ngIf="registrationForm.get('FirstName').hasError('required') && registrationForm.get('FirstName').touched">
+                  firstName is Required
+                </span>
+              </div>
+            </div>
+            <div class="text-left mb-4">
+              <div class="position-relative">
+                <input type="text" name="lastName" formControlName="LastName" class="form-control"
+                  placeholder="LastName">
+                  <span class="text-danger"
+                  *ngIf="registrationForm.get('LastName').hasError('required') && registrationForm.get('LastName').touched">
+                  LastName is Required
+                </span>
+              </div>
+            </div>
+            <div class="text-left mb-4">
+              <div class="position-relative">
+                <input type="text" name="mobileNo" formControlName="MobileNo" class="form-control" placeholder="Mobile Number"
+                (input)="onMobileNumberInput($event)">
+                <span class="text-danger"
+                  *ngIf="registrationForm.get('MobileNo').hasError('required') && registrationForm.get('MobileNo').touched">
+                  Mobile Number is Required
+                </span>
+                <span class="text-danger"
+                  *ngIf="registrationForm.get('MobileNo').hasError('minlength') && 
+                  (registrationForm.get('MobileNo').touched || registrationForm.get('MobileNo').dirty)">
+                  Mobile Number must be exactly 10 digits
+                </span>
+                <span class="text-danger"
+                  *ngIf="registrationForm.get('MobileNo').hasError('maxlength') && 
+                  (registrationForm.get('MobileNo').touched || registrationForm.get('MobileNo').dirty)">
+                  Mobile Number must be exactly 10 digits
+                </span>
+              </div>
+            </div>            
+            <div class="text-left mb-4">
+              <div class="position-relative">
+                <input
+                  [ngClass]="{'is-invalid': registrationForm.get('Email').hasError('required') && registrationForm.get('Email').touched || (registrationForm.get('Email').hasError('pattern')) }"
+                  type="text" name="email" formControlName="Email" class="form-control" placeholder="Email">
+                <i class="fa fa-envelope emailIcon position-absolute "></i>
+                <span class="text-danger"
+                  *ngIf="registrationForm.get('Email').hasError('required') && registrationForm.get('Email').touched">
+                  Email is Required
+                </span>
+                <span class="text-danger"
+                  *ngIf="registrationForm.get('Email').hasError('pattern') && registrationForm.get('Email').touched">
+                  Must be a valid email address
+                </span>
+              </div>
+            </div>
+            <div class="text-right mb-5">
+              <span>
+                <a [routerLink]="'/reset-password'">Forgot Password?</a>
+              </span>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary" (click)="RegistrationClick()">Login</button>
+            </div>
+            <div class="text-center">
+              <a [routerLink]="'/mobile-login'">Login with Mobile</a>
+            </div>
+          </form>
+        </p-card>
+      </div>
+    </p-card>
+  </div>
+</div>
